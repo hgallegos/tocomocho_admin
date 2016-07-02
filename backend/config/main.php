@@ -37,7 +37,7 @@ return [
                 ],
             ],
         ],
-        //components\Request.php
+        /*components\Request.php*/
         'request'=>[
             'class' => 'common\components\Request',
             'web'=> '/backend/web',
