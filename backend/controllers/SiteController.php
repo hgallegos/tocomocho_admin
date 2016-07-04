@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use common\models\User;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -20,15 +21,26 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
+                'only' => ['logout', 'index', 'eroor'],
                 'rules' => [
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['logout'],
                         'allow' => true,
                         'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['index', 'error'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            $valid_rol = User::ROLE_ADMIN;
+                            return User::isRole($valid_rol) && User::isActive();
+                        }
                     ],
                 ],
             ],

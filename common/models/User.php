@@ -11,7 +11,7 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
- * @property string $username
+ * @property string $nombre
  * @property string $password_hash
  * @property string $password_reset_token
  * @property string $email
@@ -20,11 +20,19 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property integer $tipo
+ *
+ * * @property Notificacion[] $notificacions
+ * @property Resenia[] $resenias
  */
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_ACTIVE = 10;
+
+    //Roles
+    const ROLE_USER = 10;
+    const ROLE_ADMIN = 20;
 
 
     /**
@@ -32,7 +40,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%Usuario}}';
     }
 
     /**
@@ -59,6 +67,37 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
+    public function attributeLabels()
+    {
+        return [
+            'email' => 'Email',
+            'nombre' => 'Nombre',
+            'password' => 'Password',
+            'valoracionDeUsuario' => 'Valoracion De Usuario',
+            'tipo' => 'Tipo',
+            'status' => 'Status',
+        ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getNotificacions()
+    {
+        return $this->hasMany(Notificacion::className(), ['email' => 'email']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getResenias()
+    {
+        return $this->hasMany(Resenia::className(), ['emailUsuario' => 'email']);
+    }
+
+    /**
+     * @inheritdoc
+     */
     public static function findIdentity($id)
     {
         return static::findOne(['id' => $id, 'status' => self::STATUS_ACTIVE]);
@@ -75,12 +114,12 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * Finds user by username
      *
-     * @param string $username
+     * @param string $email
      * @return static|null
      */
-    public static function findByUsername($username)
+    public static function findByUsername($email)
     {
-        return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+        return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -185,5 +224,15 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function isRole($tipo)
+    {
+        return Yii::$app->user->identity->tipo === $tipo;
+    }
+
+    public static function isActive()
+    {
+        return Yii::$app->user->identity->status == self::STATUS_ACTIVE;
     }
 }
