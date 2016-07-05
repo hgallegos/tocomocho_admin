@@ -1,14 +1,14 @@
 <?php
 
-namespace backend\models\search;
+namespace common\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Vehiculo;
+use common\models\Vehiculo;
 
 /**
- * VehiculoSearch represents the model behind the search form about `backend\models\Vehiculo`.
+ * VehiculoSearch represents the model behind the search form about `common\models\Vehiculo`.
  */
 class VehiculoSearch extends Vehiculo
 {

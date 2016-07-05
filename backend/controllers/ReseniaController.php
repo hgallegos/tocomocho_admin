@@ -4,8 +4,8 @@ namespace backend\controllers;
 
 use common\models\User;
 use Yii;
-use backend\models\Resenia;
-use backend\models\search\ReseniaSearch;
+use common\models\Resenia;
+use common\models\search\ReseniaSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

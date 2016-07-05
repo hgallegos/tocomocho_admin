@@ -1,16 +1,16 @@
 <?php
 
-namespace backend\models\search;
+namespace common\models\search;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Resenia;
+use common\models\Notificacion;
 
 /**
- * ReseniaSearch represents the model behind the search form about `backend\models\Resenia`.
+ * NotificacionSearch represents the model behind the search form about `common\models\Notificacion`.
  */
-class ReseniaSearch extends Resenia
+class NotificacionSearch extends Notificacion
 {
     /**
      * @inheritdoc
@@ -18,9 +18,8 @@ class ReseniaSearch extends Resenia
     public function rules()
     {
         return [
-            [['idComentario', 'idUsuario', 'idVehiculo'], 'integer'],
-            [['contenido', 'fecha'], 'safe'],
-            [['nCalidad', 'nEconomia', 'valoracion', 'rendimientoR'], 'number'],
+            [['idNotificacion', 'idUsuario', 'idVehiculo'], 'integer'],
+            [['descripcion'], 'safe'],
         ];
     }
 
@@ -42,7 +41,7 @@ class ReseniaSearch extends Resenia
      */
     public function search($params)
     {
-        $query = Resenia::find();
+        $query = Notificacion::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -57,17 +56,12 @@ class ReseniaSearch extends Resenia
         }
 
         $query->andFilterWhere([
-            'idComentario' => $this->idComentario,
-            'fecha' => $this->fecha,
+            'idNotificacion' => $this->idNotificacion,
             'idUsuario' => $this->idUsuario,
             'idVehiculo' => $this->idVehiculo,
-            'nCalidad' => $this->nCalidad,
-            'nEconomia' => $this->nEconomia,
-            'valoracion' => $this->valoracion,
-            'rendimientoR' => $this->rendimientoR,
         ]);
 
-        $query->andFilterWhere(['like', 'contenido', $this->contenido]);
+        $query->andFilterWhere(['like', 'descripcion', $this->descripcion]);
 
         return $dataProvider;
     }

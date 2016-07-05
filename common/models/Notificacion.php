@@ -1,34 +1,28 @@
 <?php
 
-namespace backend\models;
+namespace common\models;
 
 use Yii;
 
 /**
- * This is the model class for table "Resenia".
+ * This is the model class for table "Notificacion".
  *
- * @property integer $idComentario
- * @property string $contenido
- * @property string $fecha
+ * @property integer $idNotificacion
  * @property integer $idUsuario
+ * @property string $descripcion
  * @property integer $idVehiculo
- * @property double $nCalidad
- * @property double $nEconomia
- * @property double $valoracion
- * @property double $rendimientoR
  *
- * @property Falla[] $fallas
  * @property Usuario $idUsuario0
  * @property Vehiculo $idVehiculo0
  */
-class Resenia extends \yii\db\ActiveRecord
+class Notificacion extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'Resenia';
+        return 'Notificacion';
     }
 
     /**
@@ -37,10 +31,8 @@ class Resenia extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['contenido'], 'string'],
-            [['fecha'], 'safe'],
             [['idUsuario', 'idVehiculo'], 'integer'],
-            [['nCalidad', 'nEconomia', 'valoracion', 'rendimientoR'], 'number'],
+            [['descripcion'], 'string', 'max' => 45],
             [['idUsuario'], 'exist', 'skipOnError' => true, 'targetClass' => Usuario::className(), 'targetAttribute' => ['idUsuario' => 'id']],
             [['idVehiculo'], 'exist', 'skipOnError' => true, 'targetClass' => Vehiculo::className(), 'targetAttribute' => ['idVehiculo' => 'idVehiculo']],
         ];
@@ -52,24 +44,11 @@ class Resenia extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idComentario' => 'Id Comentario',
-            'contenido' => 'Contenido',
-            'fecha' => 'Fecha',
+            'idNotificacion' => 'Id Notificacion',
             'idUsuario' => 'Id Usuario',
+            'descripcion' => 'Descripcion',
             'idVehiculo' => 'Id Vehiculo',
-            'nCalidad' => 'N Calidad',
-            'nEconomia' => 'N Economia',
-            'valoracion' => 'Valoracion',
-            'rendimientoR' => 'Rendimiento R',
         ];
-    }
-
-    /**
-     * @return \yii\db\ActiveQuery
-     */
-    public function getFallas()
-    {
-        return $this->hasMany(Falla::className(), ['idComentario' => 'idComentario']);
     }
 
     /**

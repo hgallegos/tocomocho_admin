@@ -4,8 +4,8 @@ namespace backend\controllers;
 
 use common\models\User;
 use Yii;
-use backend\models\Vehiculo;
-use backend\models\search\VehiculoSearch;
+use common\models\Vehiculo;
+use common\models\search\VehiculoSearch;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
