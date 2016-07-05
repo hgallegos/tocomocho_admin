@@ -54,23 +54,38 @@ class ReseniaController extends Controller
      * @return mixed
      */
     public function actionView($id)
-    {   
+    {
         $request = Yii::$app->request;
         if($request->isAjax){
             Yii::$app->response->format = Response::FORMAT_JSON;
             return [
-                    'title'=> "Resenia #".$id,
-                    'content'=>$this->renderAjax('view', [
-                        'model' => $this->findModel($id),
-                    ]),
-                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
-                ];    
+                'title'=> "Resenia #".$id,
+                'content'=>$this->renderAjax('view', [
+                    'model' => $this->findModel($id),
+                ]),
+                'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                    Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
+            ];
         }else{
             return $this->render('view', [
                 'model' => $this->findModel($id),
             ]);
         }
+    }
+
+    public function actionAutover($idVehiculo)
+    {
+        $searchModel = new ReseniaSearch();
+        $dataProvider = $searchModel->search_ver(Yii::$app->request->queryParams,$idVehiculo);
+
+        $usuarios = $searchModel->AutoVer_Usuario($idVehiculo);
+
+        return $this->render('autover', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'TLSusuarios' => $usuarios,
+            'idVehiculo' => $idVehiculo,
+        ]);
     }
 
     /**
@@ -82,7 +97,7 @@ class ReseniaController extends Controller
     public function actionCreate()
     {
         $request = Yii::$app->request;
-        $model = new Resenia();  
+        $model = new Resenia();
 
         if($request->isAjax){
             /*
@@ -96,28 +111,28 @@ class ReseniaController extends Controller
                         'model' => $model,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
-        
-                ];         
+                        Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+
+                ];
             }else if($model->load($request->post()) && $model->save()){
                 return [
                     'forceReload'=>'#crud-datatable-pjax',
                     'title'=> "Create new Resenia",
                     'content'=>'<span class="text-success">Create Resenia success</span>',
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                            Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
-        
-                ];         
-            }else{           
+                        Html::a('Create More',['create'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+
+                ];
+            }else{
                 return [
                     'title'=> "Create new Resenia",
                     'content'=>$this->renderAjax('create', [
                         'model' => $model,
                     ]),
                     'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
-                                Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
-        
-                ];         
+                        Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+
+                ];
             }
         }else{
             /*
@@ -131,7 +146,68 @@ class ReseniaController extends Controller
                 ]);
             }
         }
-       
+
+    }
+    public function actionCreate_ver($idVehiculo)
+    {
+        $request = Yii::$app->request;
+        $model = new Resenia();
+
+        if($request->isAjax){
+            /*
+            *   Process for ajax request
+            */
+            Yii::$app->response->format = Response::FORMAT_JSON;
+            if($request->isGet){
+                return [
+                    'title'=> "Crear nueva reseña",
+                    'content'=>$this->renderAjax('create_ver', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                        Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+
+                ];
+            }else if($model->load($request->post()) && $model->save()){
+                return [
+                    'forceReload'=>'#crud-datatable-pjax',
+                    'title'=> "Crear nueva reseña",
+                    'content'=>'<span class="text-success">Crear nueva reseña/span>',
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                        Html::a('Create More',['create_ver'],['class'=>'btn btn-primary','role'=>'modal-remote'])
+
+                ];
+            }else{
+                return [
+                    'title'=> "Crear nueva reseña",
+                    'content'=>$this->renderAjax('create_ver', [
+                        'model' => $model,
+                    ]),
+                    'footer'=> Html::button('Close',['class'=>'btn btn-default pull-left','data-dismiss'=>"modal"]).
+                        Html::button('Save',['class'=>'btn btn-primary','type'=>"submit"])
+
+                ];
+            }
+        }else{
+            /*
+            *   Process for non-ajax request
+            */
+            if ($request->post()) {
+                $post = $request->post();
+                $post['Resenia']['idVehiculo'] = $idVehiculo;
+                $post['Resenia']['fecha'] = date("Y-m-d");
+                $post['Resenia']['idUsuario'] = Yii::$app->user->identity->getId();
+
+                if($model->load($post)&&$model->save()) {
+                    return $this->redirect(['view', 'id' => $model->idComentario]);
+                }
+            } else {
+                return $this->render('create_ver', [
+                    'model' => $model,
+                ]);
+            }
+        }
+
     }
 
     /**
