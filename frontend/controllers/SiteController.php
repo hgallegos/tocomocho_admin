@@ -14,11 +14,6 @@ use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\User;
 
-//PARA LA FUNCION DE BUSQUEDA
-use common\models\BusquedaFormulario;
-use common\models\Vehiculo;
-use yii\data\Pagination; 
-
 /**
  * Site controller
  */
@@ -216,17 +211,4 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
-
-    public function actionBusqueda(){
-        $model = new BusquedaFormulario();
-
-        if($model->load(Yii::$app->request->post()) && $model->validate()){
-        
-        return $this->render('\frontend\views\site\vehiculo/resultadosBusqueda', [
-            'vehiculos' => $vehiculos,
-            'pagination' => $pagination,
-            ]);
-        }else{
-            return $this->render('\frontend\views\site\formularioIngreso', ['model' => $model]);
-        }
 }
