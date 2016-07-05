@@ -17,6 +17,9 @@ use Yii;
  */
 class Notificacion extends \yii\db\ActiveRecord
 {
+    const STATUS_UNREAD = 10;
+    const STATUS_READ = 20;
+    const STATUS_TRASH = 30;
     /**
      * @inheritdoc
      */
@@ -44,10 +47,9 @@ class Notificacion extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idNotificacion' => 'Id Notificacion',
-            'idUsuario' => 'Id Usuario',
+            'idUsuario' => 'Usuario',
             'descripcion' => 'Descripcion',
-            'idVehiculo' => 'Id Vehiculo',
+            'idVehiculo' => 'Vehiculo',
         ];
     }
 

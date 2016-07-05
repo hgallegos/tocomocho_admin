@@ -1,9 +1,11 @@
 <?php
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Vehiculo;
 
 /* @var $this yii\web\View */
-/* @var $model backend\models\Resenia */
+/* @var $model common\models\Resenia */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
@@ -14,8 +16,9 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'contenido')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'fecha')->textInput() ?>
-    //esto tengo que cambiarlo, se debe seleccionar desde una lista o algo
+    
     <?= $form->field($model, 'idVehiculo')->textInput() ?>
+    
 
     <?= $form->field($model, 'nCalidad')->textInput() ?>
 

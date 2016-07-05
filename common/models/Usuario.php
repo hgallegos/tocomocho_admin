@@ -24,6 +24,12 @@ use Yii;
  */
 class Usuario extends \yii\db\ActiveRecord
 {
+    const STATUS_DELETED = 0;
+    const STATUS_ACTIVE = 10;
+
+    //Roles
+    const ROLE_USER = 10;
+    const ROLE_ADMIN = 20;
     /**
      * @inheritdoc
      */

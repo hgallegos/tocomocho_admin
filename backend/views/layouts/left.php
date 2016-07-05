@@ -36,28 +36,12 @@
                     ['label' => 'Iniciar Sesión', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
                         'label' => 'Notificaciones',
-                        'icon' => 'fa fa-envelope',
+                        'icon' => 'fa fa-bell',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'fa fa-circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'fa fa-circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
+                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['/notificacion'],],
+                            ['label' => 'Borrados', 'icon' => 'fa fa-dashboard', 'url' => ['/notificacion/basura'],],
+
                         ],
                     ],
                     ['label' => 'Otros', 'options' => ['class' => 'header']],

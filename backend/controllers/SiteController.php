@@ -1,7 +1,11 @@
 <?php
 namespace backend\controllers;
 
+use common\models\Notificacion;
+use common\models\Resenia;
 use common\models\User;
+use common\models\Usuario;
+use common\models\Vehiculo;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -67,7 +71,35 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $numberOfUsers = Usuario::find()
+            ->where(['status' => Usuario::STATUS_ACTIVE])
+            ->count();
+       $numberOfCars = Vehiculo::find()
+            ->count();
+        $numberOfReviews = Resenia::find()
+            ->count();
+        $numberOfNotify = Notificacion::find()
+            ->count();
+        $lastUsers = Usuario::find()
+            ->orderBy(['id' => SORT_DESC])
+            ->limit(8)->all();
+
+        $lastReviews = Resenia::find()
+            ->orderBy(['idComentario' =>SORT_DESC])
+            ->limit(10)->all();
+
+        $lastCars= Vehiculo::find()
+            ->orderBy(['anio' =>SORT_DESC])
+            ->limit(8)->all();
+        
+
+        return $this->render('index', array('numberOfUsers' => $numberOfUsers,
+            'numberOfReviews' => $numberOfReviews,
+            'numberOfCars' => $numberOfCars,
+            'numberOfNotify' => $numberOfNotify,
+            'lastUsers' => $lastUsers,
+            'lastCars' => $lastCars,
+            'lastReviews' => $lastReviews));
     }
 
     public function actionLogin()

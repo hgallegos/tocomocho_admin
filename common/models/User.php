@@ -230,6 +230,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return Yii::$app->user->identity->tipo === $tipo;
     }
+    public static function roleInArray($arr_role)
+    {
+        return in_array(Yii::$app->user->identity->tipo, $arr_role);
+    }
 
     public static function isActive()
     {
