@@ -5,12 +5,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
+                <img src="<?= $directoryAsset ?>/img/avatar5.png" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
-
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <p><?php echo Yii::$app->user->identity->nombre ?></p>
             </div>
         </div>
 
@@ -30,16 +28,18 @@
             [
                 'options' => ['class' => 'sidebar-menu'],
                 'items' => [
-                    ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
-                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+                    ['label' => 'Menu Tocomocho', 'options' => ['class' => 'header']],
+                    ['label' => 'Inicio', 'icon' => 'fa fa-home', 'url' => ['/']],
+                    ['label' => 'Usuarios', 'icon' => 'fa fa-users', 'url' => ['/usuario']],
+                    ['label' => 'Vehiculos', 'icon' => 'fa fa-car', 'url' => ['/vehiculo']],
+                    ['label' => 'Reseñas', 'icon' => 'fa fa-comments', 'url' => ['/resenia']],
+                    ['label' => 'Iniciar Sesión', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
                     [
-                        'label' => 'Same tools',
-                        'icon' => 'fa fa-share',
+                        'label' => 'Notificaciones',
+                        'icon' => 'fa fa-envelope',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
+                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['/gii'],],
                             ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
                             [
                                 'label' => 'Level One',
@@ -60,7 +60,12 @@
                             ],
                         ],
                     ],
+                    ['label' => 'Otros', 'options' => ['class' => 'header']],
+                    ['label' => 'Volver a Tocomocho', 'icon' => 'fa  fa-level-up', 'url' => ['../']],
+                    ['label' => 'Acerca de', 'icon' => 'glyphicon glyphicon-info-sign', 'url' => ['../site/about']],
                 ],
+
+
             ]
         ) ?>
 
