@@ -10,16 +10,15 @@ use yii\widgets\DetailView;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idComentario',
             'contenido:ntext',
             'fecha',
-            'idUsuario',
-            'idVehiculo',
             'nCalidad',
             'nEconomia',
             'valoracion',
             'rendimientoR',
         ],
     ]) ?>
-
+    <a href="" class="btn btn-primary">
+        Volver
+    </a>
 </div>

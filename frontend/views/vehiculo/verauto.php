@@ -51,11 +51,12 @@
                         </tbody>
                     </table>
                     <div>
-                        <a href="/products/26371/ratings/new/" class="btn btn-primary">
+                        <a href="../resenia/autover?idVehiculo=<?= $idVehiculo ?>" class="btn btn-primary">
                             ¿Eres dueño?
                             ¡Déjanos tus comentarios!
                         </a>
                     </div>
+                    <?php if($isLogin){ ?>
                     <div class="row">
                         <div class="option_button col-xs-12">
                             <div class="btn-group">
@@ -67,6 +68,7 @@
 
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
 
                 <div class="col-lg-6 col-md-5 col-sm-5 col-xs-12">

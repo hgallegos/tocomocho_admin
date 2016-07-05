@@ -37,6 +37,10 @@ class VehiculoController extends Controller
      * @return mixed
      */
     public function actionVerauto($id){
+        $isLogin = false;
+        if (!Yii::$app->user->isGuest) {
+            $isLogin = true;
+        }
 
         if(!isset($id)){
             return $this->render('noexiste');
@@ -51,6 +55,8 @@ class VehiculoController extends Controller
 
         return $this->render('verauto', [
             'autoData' => $data,
+            'isLogin' => $isLogin,
+            'idVehiculo' => $id,
         ]);
 
     }

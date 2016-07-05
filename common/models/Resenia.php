@@ -55,11 +55,11 @@ class Resenia extends \yii\db\ActiveRecord
             'idComentario' => 'Id Comentario',
             'contenido' => 'Contenido',
             'fecha' => 'Fecha',
-            'idUsuario' => 'Id Usuario',
+            'idUsuario' => 'Usuario',
             'idVehiculo' => 'Id Vehiculo',
             'nCalidad' => 'N Calidad',
             'nEconomia' => 'N Economia',
-            'valoracion' => 'Valoracion',
+            'valoracion' => 'Valoración',
             'rendimientoR' => 'Rendimiento R',
         ];
     }
@@ -79,6 +79,7 @@ class Resenia extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Usuario::className(), ['id' => 'idUsuario']);
     }
+    
 
     /**
      * @return \yii\db\ActiveQuery

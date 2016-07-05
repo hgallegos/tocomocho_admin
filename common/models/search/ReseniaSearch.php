@@ -56,6 +56,7 @@ class ReseniaSearch extends Resenia
             return $dataProvider;
         }
 
+
         $query->andFilterWhere([
             'idComentario' => $this->idComentario,
             'fecha' => $this->fecha,
@@ -71,4 +72,53 @@ class ReseniaSearch extends Resenia
 
         return $dataProvider;
     }
+
+
+    public function search_ver($params,$id)
+    {
+        $query = Resenia::find();
+
+        $dataProvider = new ActiveDataProvider([
+            'query' => $query,
+        ]);
+
+        $this->load($params);
+
+        if (!$this->validate()) {
+            // uncomment the following line if you do not want to return any records when validation fails
+            // $query->where('0=1');
+            return $dataProvider;
+        }
+
+        $query->where(['idVehiculo' => $id]);
+
+
+        $query->andFilterWhere([
+            'idComentario' => $this->idComentario,
+            'fecha' => $this->fecha,
+            'idUsuario' => $this->idUsuario,
+            'idVehiculo' => $this->idVehiculo,
+            'nCalidad' => $this->nCalidad,
+            'nEconomia' => $this->nEconomia,
+            'valoracion' => $this->valoracion,
+            'rendimientoR' => $this->rendimientoR,
+        ]);
+
+        $query->andFilterWhere(['like', 'contenido', $this->contenido]);
+
+        return $dataProvider;
+    }
+
+    public function AutoVer_Usuario($id){
+        $data = array();
+        $rows = (new \yii\db\Query())
+            ->select('*')
+            ->from('Usuario')
+            ->all();
+        for($i = 0; $i< sizeof($rows); $i++){
+            $data[$rows[$i]['id']] = $rows[$i]["nombre"];
+        }
+        return $data;
+    }
+    
 }
