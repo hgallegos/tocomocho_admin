@@ -36,6 +36,24 @@ class VehiculoController extends Controller
      * Lists all Vehiculo models.
      * @return mixed
      */
+    public function actionVerauto($id){
+
+        if(!isset($id)){
+            return $this->render('noexiste');
+        }
+
+        $buscaAuto = new VehiculoSearch();
+        $data = $buscaAuto->VerAuto($id);
+        
+        if(!isset($data['idVehiculo'])){
+            return $this->render('noexiste');
+        }
+
+        return $this->render('verauto', [
+            'autoData' => $data,
+        ]);
+
+    }
     public function actionIndex()
     {    
         $searchModel = new VehiculoSearch();

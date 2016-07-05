@@ -39,6 +39,14 @@ class VehiculoSearch extends Vehiculo
      *
      * @return ActiveDataProvider
      */
+    public function VerAuto($id){
+        $rows = (new \yii\db\Query())
+            ->select('*')
+            ->from('Vehiculo')
+            ->where(['idVehiculo' => $id])
+            ->one();
+        return $rows;
+    }
     public function search($params)
     {
         $query = Vehiculo::find();
