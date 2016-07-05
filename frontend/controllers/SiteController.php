@@ -13,6 +13,10 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use common\models\User;
+use yii\data\Pagination;
+use common\models\Vehiculo;
+use common\models\Resenia;
+use common\models\BusquedaFormulario;
 
 /**
  * Site controller
@@ -211,4 +215,45 @@ class SiteController extends Controller
             'model' => $model,
         ]);
     }
+
+    public function actionBusqueda(){
+        $model = new BusquedaFormulario();
+
+        if($model->load(Yii::$app->request->post()) && $model->validate()){
+            // Valida los datos recibidos en $model
+            $query = Vehiculo::find()->where(['LIKE', 'marca', $model->marca])
+                ->andWhere(['LIKE', 'modelo', $model->modelo])
+                ->andWhere(['between', 'tasacionFiscal', $model->precioD, $model->precioH])
+                ->andWhere(['between', 'anio', $model->anioD, $model->anioH]);
+
+            // $pagination = new Pagination([
+            //     'defaultPageSize' => 5,
+            //     'totalCount' => $query->count(),
+            // ]);
+
+            $vehiculos = $query->orderBy('idVehiculo')
+                // ->offset($pagination->offset)
+                // ->limit($pagination->limit)
+                ->all();
+            if($query->count() == 0){
+                return $this->render('errorBusqueda');
+            }
+            return $this->render('resultadosBusqueda', [
+                'vehiculos' => $vehiculos,
+                // 'pagination' => $pagination,
+            ]);
+            //Yii::$app->response->redirect(['site/resultado', $model->marca]);
+        }else{
+            //SELECT * FROM Resenia ORDER BY idComentario DESC limit 2
+            $query = Resenia::find();
+
+            $resenias = $query->orderBy(['idComentario' => SORT_DESC])
+                ->limit(3)
+                ->all();
+
+            return $this->render('formularioIngreso', ['model' => $model,
+                'resenias' => $resenias,]);
+        }
+
+    }//FIN FUNCION BUSQUEDA
 }

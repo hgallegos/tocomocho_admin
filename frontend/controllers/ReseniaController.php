@@ -5,11 +5,13 @@ namespace frontend\controllers;
 use Yii;
 use common\models\Resenia;
 use common\models\search\ReseniaSearch;
+use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use \yii\web\Response;
 use yii\helpers\Html;
+use common\models\User;
 
 /**
  * ReseniaController implements the CRUD actions for Resenia model.
@@ -22,6 +24,31 @@ class ReseniaController extends Controller
     public function behaviors()
     {
         return [
+            /*'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout', 'index'],
+                'rules' => [
+                    [
+                        'actions' => ['login', 'error'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['create_ver'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                        'matchCallback' => function ($rule, $action) {
+                            $valid_rol = [User::ROLE_ADMIN, User::ROLE_USER];
+                            return User::roleInArray($valid_rol) && User::isActive();
+                        }
+                    ],
+                ],
+            ],*/
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [

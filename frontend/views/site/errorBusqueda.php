@@ -1,0 +1,3 @@
+<h1>ERROR: NO SE HAN ENCONTRADO RESULTADOS</h1>
+
+<a href="">VOLVER</a>

@@ -176,11 +176,11 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
                     </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
                 <div class="box-body no-padding">
-                    <div class="users-list clearfix">
+                    <div class="users-list">
                         <?php $tam = count($lastCars);
                         for ($i = 0; $i<$tam; $i++){
                             ?><li>
-                            <img src="http://tocomocho.site/images/<?= $lastCars[$i]->nomImagen ?>" class="img-circle" alt="User Image" />
+                            <img src="http://tocomocho.site/images/<?= $lastCars[$i]->nomImagen ?>" width="120" height="85" class="img-circle" alt="User Image" />
                             <span class="users-list-name"><?= $lastCars[$i]->marca ?></span>
                             <span class="users-list-date"><?= substr($lastCars[$i]->modelo,0,15); ?></span>
                             </li><?php
