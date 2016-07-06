@@ -88,17 +88,13 @@ class NotificacionController extends Controller
 
     }
 
-    public function actionUnread()
+    public function actionUnread($id)
     {
-        $searchModel = new NotificacionSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
-
-        $dataProvider->query->where('Notificacion.status = '.Notificacion::STATUS_UNREAD);
-
-        return $this->render('unread', [
-            'searchModel' => $searchModel,
-            'dataProvider' => $dataProvider,
-        ]);
+        $notificacion = Notificacion::findOne($id);
+        $notificacion->status = Notificacion::STATUS_UNREAD;
+        $notificacion->update();
+        
+        return $this->actionTrash();
 
     }
 
@@ -109,8 +105,24 @@ class NotificacionController extends Controller
      */
     public function actionView($id)
     {
+        $notification = Notificacion::findOne($id);
+        $notification->status = Notificacion::STATUS_READ;
+        $notification->update();
+
         return $this->render('view', [
             'model' => $this->findModel($id),
+        ]);
+    }
+
+    public function actionNoleidos()
+    {
+        $searchModel = new NotificacionSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->query->where('Notificacion.status = '.Notificacion::STATUS_UNREAD);
+        return $this->render('unread', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
         ]);
     }
 

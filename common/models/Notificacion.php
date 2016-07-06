@@ -20,6 +20,7 @@ class Notificacion extends \yii\db\ActiveRecord
     const STATUS_UNREAD = 10;
     const STATUS_READ = 20;
     const STATUS_TRASH = 30;
+
     /**
      * @inheritdoc
      */
@@ -50,13 +51,14 @@ class Notificacion extends \yii\db\ActiveRecord
             'idUsuario' => 'Usuario',
             'descripcion' => 'Descripcion',
             'idVehiculo' => 'Vehiculo',
+            'status' => 'Estado',
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUsuario()
+    public function getUsuario0()
     {
         return $this->hasOne(Usuario::className(), ['id' => 'idUsuario']);
     }
@@ -64,18 +66,10 @@ class Notificacion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getVehiculo()
+    public function getVehiculo0()
     {
         return $this->hasOne(Vehiculo::className(), ['idVehiculo' => 'idVehiculo']);
     }
 
-    public function getNombreUsuario()
-    {
-        return $this->usuario->name;
-    }
 
-    public function getMarcaVehiculo()
-    {
-        return $this->vehiculo->marca;
-    }
 }

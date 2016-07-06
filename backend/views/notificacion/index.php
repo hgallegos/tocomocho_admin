@@ -8,7 +8,7 @@ use common\models\Usuario;
 /* @var $searchModel common\models\search\NotificacionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Notificacions';
+$this->title = 'Notificaciones';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="notificacion-index">
@@ -20,21 +20,33 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             [
               'attribute' => 'nombre usuario',
-                'value' => 'usuario.nombre'
+                'value' => 'usuario0.nombre'
             ],
             [
                 'attribute' => 'marca',
-                'value' => 'vehiculo.marca'
+                'value' => 'vehiculo0.marca'
             ],
             [
                 'attribute' => 'modelo',
-                'value' => 'vehiculo.modelo'
+                'value' => 'vehiculo0.modelo'
             ],
             [
                 'attribute' => 'anio',
-                'value' => 'vehiculo.anio'
+                'value' => 'vehiculo0.anio'
             ],
             'descripcion',
+            [
+              'attribute' => 'status',
+                'format' => 'raw',
+               'value' => function ($dataProvider){
+                    if($dataProvider->status == \common\models\Notificacion::STATUS_READ){
+                        return "Leido";
+                    }
+                    else{
+                        return "No leido";
+                    }
+                },
+            ],
 
             ['class' => 'yii\grid\ActionColumn', 'template' => '{view} {delete}'],
         ],

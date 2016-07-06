@@ -40,6 +40,7 @@
                         'url' => '#',
                         'items' => [
                             ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['index'],],
+                            ['label' => 'No leidos', 'icon' => 'glyphicon glyphicon-eye-close', 'url' => ['notificacion/noleidos'], ],
                             ['label' => 'Borrador', 'icon' => 'fa fa-trash', 'url' => ['notificacion/trash'],],
 
                         ],

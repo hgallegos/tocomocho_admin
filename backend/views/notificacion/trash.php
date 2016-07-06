@@ -8,7 +8,7 @@ use common\models\Usuario;
 /* @var $searchModel common\models\search\NotificacionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Notificacions';
+$this->title = 'Borrador';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="notificacion-index">

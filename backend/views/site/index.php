@@ -175,18 +175,56 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
                         <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                     </div><!-- /.box-tools -->
                 </div><!-- /.box-header -->
-                <div class="box-body no-padding">
-                    <div class="users-list">
-                        <?php $tam = count($lastCars);
-                        for ($i = 0; $i<$tam; $i++){
-                            ?><li>
-                            <img src="http://tocomocho.site/images/<?= $lastCars[$i]->nomImagen ?>" width="120" height="85" class="img-circle" alt="User Image" />
-                            <span class="users-list-name"><?= $lastCars[$i]->marca ?></span>
-                            <span class="users-list-date"><?= substr($lastCars[$i]->modelo,0,15); ?></span>
-                            </li><?php
-                        }
-                        ?>
-                    </div>
+                <div class="box-body table-responsive">
+                    <table class="table-hover">
+                        <tbody>
+                            <tr>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[0]->nomImagen ?>"  width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[0]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[0]->modelo,0,15); ?></span>
+                                </th>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[1]->nomImagen ?>" width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[1]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[1]->modelo,0,15); ?></span>
+                                </th>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[2]->nomImagen ?>" width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[2]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[2]->modelo,0,15); ?></span>
+                                </th>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[3]->nomImagen ?>" width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[3]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[3]->modelo,0,15); ?></span>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[4]->nomImagen ?>" width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[4]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[4]->modelo,0,15); ?></span>
+                                </th>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[5]->nomImagen ?>" width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[5]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[5]->modelo,0,15); ?></span>
+                                </th>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[6]->nomImagen ?>" width="120" height="85"  alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[6]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[6]->modelo,0,15); ?></span>
+                                </th>
+                                <th class="text-center">
+                                    <img src="http://tocomocho.site/images/<?= $lastCars[7]->nomImagen ?>" width="120" height="85" alt="User Image" />
+                                    <span class="users-list-name"><?= $lastCars[7]->marca ?></span>
+                                    <span class="users-list-date"><?= substr($lastCars[7]->modelo,0,15); ?></span>
+                                </th>
+                            </tr>
+                        </tbody>
+
+                    </table>
                 </div><!-- /.box-body -->
             </div><!-- /.box -->
         </div>

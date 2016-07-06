@@ -6,20 +6,19 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model common\models\Notificacion */
 
-$this->title = $model->idNotificacion;
+$this->title = "Notificacion de ".$model->usuario0->nombre ;
 $this->params['breadcrumbs'][] = ['label' => 'Notificacions', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="notificacion-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
+    <h1><?= Html::encode($this->title) ?> </h1>
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->idNotificacion], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->idNotificacion], [
+        <?= Html::a('No leido', ['unread', 'id' => $model->idNotificacion], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar permanentemente', ['delete', 'id' => $model->idNotificacion], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Seguro quieres eliminar este item?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -28,12 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idNotificacion',
-            'idUsuario',
+            'usuario0.nombre',
+            'vehiculo0.marca',
+            'vehiculo0.modelo',
+            'vehiculo0.anio',
             'descripcion',
-            'idVehiculo',
-            'status',
         ],
-    ]) ?>
+    ])?>
 
 </div>

@@ -25,7 +25,7 @@ class NotificacionSearch extends Notificacion
         return [
             [['idNotificacion', 'idUsuario', 'idVehiculo'], 'integer'],
             [['descripcion'], 'safe'],
-            [['marca', 'nombre', 'anio'], 'safe'],
+            [['marca', 'nombre', 'anio', 'modelo'], 'safe'],
         ];
     }
 
@@ -52,7 +52,7 @@ class NotificacionSearch extends Notificacion
         // Important: lets join the query with our previously mentioned relations
         // I do not make any other configuration like aliases or whatever, feel free
         // to investigate that your self
-        $query->joinWith(['usuario', 'vehiculo']);
+        $query->joinWith(['usuario0', 'vehiculo0']);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
