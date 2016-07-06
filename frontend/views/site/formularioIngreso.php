@@ -1,6 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use common\models\Vehiculo;
 
 ?>
 
@@ -57,12 +58,15 @@ use yii\widgets\ActiveForm;
 		</br></br>
 	 <div class="row">
 <?php foreach ($resenias as $resenia): ?>
+	<?php $vehiculo = Vehiculo::findOne($resenia->idVehiculo); ?>
 		  <div class="col-sm-6 col-md-4">
 		    <div class="thumbnail">
-		      <img src="..." alt="-">
+		    <br>
+		      <img class="img-rounded" src="http://tocomocho.site/images/<?php echo $vehiculo->nomImagen; ?>" alt="-">
 		      <div class="caption">
-		        <h3>Reseña</h3>
-		        <p><?php echo $resenia->contenido; ?></p>
+		        <h3 style="font-weight:bold;"><?php echo $vehiculo->marca; ?></h3>
+		        <h4>MODELO <?php echo $vehiculo->modelo; ?></h4>
+		        <p>"<?php echo $resenia->contenido; ?>"</p>
 		        <p><a href="<?='resenia/autover?idVehiculo='.$resenia->idVehiculo?>" class="btn btn-primary" role="button">Ir al detalle</a></p>
 		      </div>
 		    </div>

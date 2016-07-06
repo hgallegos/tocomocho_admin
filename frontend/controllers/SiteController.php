@@ -17,6 +17,7 @@ use yii\data\Pagination;
 use common\models\Vehiculo;
 use common\models\Resenia;
 use common\models\BusquedaFormulario;
+use yii\db\query;
 
 /**
  * Site controller
@@ -244,12 +245,15 @@ class SiteController extends Controller
             ]);
             //Yii::$app->response->redirect(['site/resultado', $model->marca]);
         }else{
-            //SELECT * FROM Resenia ORDER BY idComentario DESC limit 2
             $query = Resenia::find();
 
-            $resenias = $query->orderBy(['idComentario' => SORT_DESC])
+            $resenias = $query
+                ->orderBy(['idComentario' => SORT_DESC])
                 ->limit(3)
                 ->all();
+
+
+
 
             return $this->render('formularioIngreso', ['model' => $model,
                 'resenias' => $resenias,]);
