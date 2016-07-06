@@ -63,7 +63,7 @@ use yii\widgets\ActiveForm;
 		      <div class="caption">
 		        <h3>Reseña</h3>
 		        <p><?php echo $resenia->contenido; ?></p>
-		        <p><a href="<?='../resenia/autover?idVehiculo='.$resenia->idVehiculo?>" class="btn btn-primary" role="button">Ir al detalle</a></p>
+		        <p><a href="<?='resenia/autover?idVehiculo='.$resenia->idVehiculo?>" class="btn btn-primary" role="button">Ir al detalle</a></p>
 		      </div>
 		    </div>
 		  </div>

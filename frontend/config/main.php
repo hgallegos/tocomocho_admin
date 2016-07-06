@@ -42,4 +42,5 @@ return [
 
     ],
     'params' => $params,
+    'defaultRoute' => 'site/busqueda',
 ];

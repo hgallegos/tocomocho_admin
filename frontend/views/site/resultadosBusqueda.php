@@ -1,8 +1,12 @@
 <?php
+ini_set('session.cache_limiter','public');
+session_cache_limiter(false);
+
 use yii\helpers\Html;
 use yii\widgets\LinkPager;
+$this->title = 'Resultados de la búsqueda';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<a href="">&#60;&#60;VOLVER</a></br></br>
 
 <div class="panel panel-default">
   <!-- Default panel contents -->
@@ -23,7 +27,7 @@ use yii\widgets\LinkPager;
         <td><?php echo $vehiculo->marca ;?></td>
         <td><?php echo $vehiculo->modelo ;?></td>
         <td><?php echo $vehiculo->anio ;?></td>
-        <td><a href="<?= '../vehiculo/verauto?id='.$vehiculo->idVehiculo?>">ENLACE</a></td>
+        <td><a href="<?= 'vehiculo/verauto?id='.$vehiculo->idVehiculo?>">ENLACE</a></td>
     </tr>
 <?php endforeach; ?>
 	</tbody>

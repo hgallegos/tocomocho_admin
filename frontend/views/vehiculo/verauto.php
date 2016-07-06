@@ -1,12 +1,17 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: MatGastonPCAdmin
  * Date: 04-07-2016
  * Time: 23:50
  */
+use yii\helpers\Html;
+$this->title = 'Detalles del Vehículo';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="container">
+   
     <div class="row">
         <div class="col-xs-12">
             <h2><?= $autoData['marca'] ?> <?= $autoData['modelo'] ?> <?= $autoData["anio"] ?></h2>
