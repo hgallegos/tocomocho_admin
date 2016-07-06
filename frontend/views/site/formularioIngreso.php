@@ -22,18 +22,52 @@ use common\models\Vehiculo;
 				<?= $form->field($model, 'modelo')?>
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
-				<?= $form->field($model, 'precioD')->label('Precio Desde')  ?>
+					<?php
+					$i=0;
+					$j=0;
+					$array;
+					for($i=0; $i<41; $i++){
+						$array[$j] = $j;
+						$j=$j+500000;
+					}?>
+				<?= $form->field($model, 'precioD')->label('Precio Desde')
+				->dropDownList($array,['prompt'=>'Seleccione']); ?>
 					</div>
 					<div class="col-sm-6 col-md-6">
-				<?= $form->field($model, 'precioH')->label('Precio Hasta')  ?>
+					<?php
+					$i=41;
+					$j=20000000;
+					$array2;
+					for($i=41; $i>0; $i--){
+						$array2[$j] = $j;
+						$j=$j-500000;
+					}?>
+				<?= $form->field($model, 'precioH')->label('Precio Hasta')
+				->dropDownList($array2,['prompt'=>'Seleccione']); ?>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-6 col-md-6">
-				<?= $form->field($model, 'anioD')->label('Año Desde') ?>
+					<?php
+					$i=0;
+					$j=1990;
+					$array3;
+					for($i=1990; $i<=2016; $i++){
+						$array3[$i] = $i;
+					}?>
+				<?= $form->field($model, 'anioD')->label('Año Desde')
+				->dropDownList($array3,['prompt'=>'Seleccione']); ?>
 					</div>
 					<div class="col-sm-6 col-md-6">
-				<?= $form->field($model, 'anioH')->label('Año Hasta') ?>
+					<?php
+					$i=0;
+					$j=1990;
+					$array4;
+					for($i=2016; $i>=1990; $i--){
+						$array4[$i] = $i;
+					}?>
+				<?= $form->field($model, 'anioH')->label('Año Hasta')
+				->dropDownList($array4,['prompt'=>'Seleccione']); ?>
 					</div>
 				</div>
 				<?= Html::submitButton('Enviar', ['class' => 'btn btn-primary'])?>
