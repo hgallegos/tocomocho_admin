@@ -19,11 +19,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'idVehiculo')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'nCalidad')->textInput() ?>
+    <?= $form->field($model, 'nCalidad')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'nEconomia')->textInput() ?>
+    <?= $form->field($model, 'nEconomia')->hiddenInput()->label(false) ?>
 
-    <?= $form->field($model, 'valoracion')->textInput() ?>
+    <?= $form->field($model, 'valoracion')->dropDownList(['1' => '1 Estrella', '2' => '2 Estrellas', '3' => '3 Estrellas', '4' => '4 Estrellas', '5' => '5 Estrellas'], ['prompt'=>'Selecciona una Calificación']) ?>
 
     <?= $form->field($model, 'rendimientoR')->textInput() ?>
 

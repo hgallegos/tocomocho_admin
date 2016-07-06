@@ -109,6 +109,15 @@ class ReseniaSearch extends Resenia
         return $dataProvider;
     }
 
+    public function RetornaAutoID($id){
+        $rows = (new \yii\db\Query())
+            ->select('idVehiculo')
+            ->from('Resenia')
+            ->where(["idComentario" => $id])
+            ->one();
+        return $rows;
+    }
+
     public function AutoVer_Usuario($id){
         $data = array();
         $rows = (new \yii\db\Query())

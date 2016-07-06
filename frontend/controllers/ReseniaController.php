@@ -94,8 +94,11 @@ class ReseniaController extends Controller
                     Html::a('Edit',['update','id'=>$id],['class'=>'btn btn-primary','role'=>'modal-remote'])
             ];
         }else{
+            $searchModel = new ReseniaSearch();
+            $vehiculo = $searchModel->RetornaAutoID($id);
             return $this->render('view', [
                 'model' => $this->findModel($id),
+                'id' => $vehiculo,
             ]);
         }
     }

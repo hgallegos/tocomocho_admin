@@ -57,10 +57,10 @@ class Resenia extends \yii\db\ActiveRecord
             'fecha' => 'Fecha',
             'idUsuario' => 'Usuario',
             'idVehiculo' => 'Id Vehiculo',
-            'nCalidad' => 'N Calidad',
-            'nEconomia' => 'N Economia',
-            'valoracion' => 'Valoración',
-            'rendimientoR' => 'Rendimiento R',
+            'nCalidad' => 'Calidad',
+            'nEconomia' => 'Economia',
+            'valoracion' => 'Valoración Usuario',
+            'rendimientoR' => 'Rendimiento Real',
         ];
     }
 

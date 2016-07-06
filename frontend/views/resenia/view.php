@@ -12,13 +12,11 @@ use yii\widgets\DetailView;
         'attributes' => [
             'contenido:ntext',
             'fecha',
-            'nCalidad',
-            'nEconomia',
             'valoracion',
             'rendimientoR',
         ],
     ]) ?>
-    <a href="" class="btn btn-primary">
+    <a href="../vehiculo/verauto?id=<?= $id['idVehiculo'] ?>" class="btn btn-primary">
         Volver
     </a>
 </div>
