@@ -39,7 +39,7 @@ $directoryAsset = Yii::$app->assetManager->getPublishedUrl('@vendor/almasaeed201
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <!-- Apply any bg-* class to to the icon to color it -->
-                <span class="info-box-icon bg-green"><i class="fa fa-envelope"></i></span>
+                <span class="info-box-icon bg-green"><i class="fa fa-bell"></i></span>
                 <div class="info-box-content">
                     <span class="info-box-text">Notificaciones</span>
                     <span class="info-box-number">
