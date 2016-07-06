@@ -69,26 +69,40 @@ $this->params['breadcrumbs'][] = $this->title;
                         }?>
                         </tbody>
                     </table>
-                    <?php if($isLogin){ ?>
-                    <?php if($b_hide){ ?>
+                    <?php if($isLogin && $b_hide){ ?>
                     <div>
                         <a href="../resenia/create_ver?idVehiculo=<?= $idVehiculo ?>" class="btn btn-primary">
                             ¿Eres dueño?
                             ¡Déjanos tus comentarios!
                         </a>
                     </div>
-                        <?php } ?>
-                    <div class="row">
-                        <div class="option_button col-xs-12">
-                            <div class="btn-group">
-                                <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
-                                    Imágen no Corresponde
-                                </a>
+                    <?php } ?>
+
+                    <?php if($autoData['LarvaImagen'] == 1){ ?>
+                        <div class="row">
+                            <div class="option_button col-xs-12">
+                                <div class="btn-group">
+                                    <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Imágen no Corresponde
+                                    </a>
+
+                                </div>
 
                             </div>
-
                         </div>
-                    </div>
+                    <?php } ?>
+                    <?php if($autoData['LarvaBot'] == 1){ ?>
+                        <div class="row">
+                            <div class="option_button col-xs-12">
+                                <div class="btn-group">
+                                    <a class="btn btn-success dropdown-toggle" data-toggle="dropdown" href="#">
+                                        Datos no Corresponden
+                                    </a>
+
+                                </div>
+
+                            </div>
+                        </div>
                     <?php } ?>
                 </div>
 
