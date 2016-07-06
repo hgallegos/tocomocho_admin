@@ -39,8 +39,8 @@
                         'icon' => 'fa fa-bell',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['/notificacion'],],
-                            ['label' => 'Borrados', 'icon' => 'fa fa-dashboard', 'url' => ['/notificacion/basura'],],
+                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['index'],],
+                            ['label' => 'Borrador', 'icon' => 'fa fa-trash', 'url' => ['notificacion/trash'],],
 
                         ],
                     ],

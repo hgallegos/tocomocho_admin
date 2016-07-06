@@ -64,12 +64,42 @@ class NotificacionController extends Controller
     {
         $searchModel = new NotificacionSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->query->where('Notificacion.status <>'.Notificacion::STATUS_TRASH );
         
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
+    }
+
+    public function actionTrash()
+    {
+        $searchModel = new NotificacionSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        
+        $dataProvider->query->where('Notificacion.status = '.Notificacion::STATUS_TRASH);
+        
+        return $this->render('trash', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+    }
+
+    public function actionUnread()
+    {
+        $searchModel = new NotificacionSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        $dataProvider->query->where('Notificacion.status = '.Notificacion::STATUS_UNREAD);
+
+        return $this->render('unread', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
     }
 
     /**
@@ -102,6 +132,8 @@ class NotificacionController extends Controller
         }
     }
 
+    
+
     /**
      * Updates an existing Notificacion model.
      * If update is successful, the browser will be redirected to the 'view' page.
@@ -129,10 +161,15 @@ class NotificacionController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        //$this->findModel($id)->delete();
+        $notificacion = Notificacion::findOne($id);
+        $notificacion->status = Notificacion::STATUS_TRASH;
+        $notificacion->update();
 
         return $this->redirect(['index']);
     }
+    
+   
 
     /**
      * Finds the Notificacion model based on its primary key value.

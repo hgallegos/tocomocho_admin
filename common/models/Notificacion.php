@@ -56,7 +56,7 @@ class Notificacion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdUsuario0()
+    public function getUsuario()
     {
         return $this->hasOne(Usuario::className(), ['id' => 'idUsuario']);
     }
@@ -64,8 +64,18 @@ class Notificacion extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getIdVehiculo0()
+    public function getVehiculo()
     {
         return $this->hasOne(Vehiculo::className(), ['idVehiculo' => 'idVehiculo']);
+    }
+
+    public function getNombreUsuario()
+    {
+        return $this->usuario->name;
+    }
+
+    public function getMarcaVehiculo()
+    {
+        return $this->vehiculo->marca;
     }
 }
