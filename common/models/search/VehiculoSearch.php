@@ -47,6 +47,16 @@ class VehiculoSearch extends Vehiculo
             ->one();
         return $rows;
     }
+
+    public function VerResenias($id){
+        $rows = (new \yii\db\Query())
+            ->select('*')
+            ->from('Resenia')
+            ->join('JOIN', 'Usuario', 'Usuario.id = Resenia.idUsuario')
+            ->where(['Resenia.idVehiculo' => $id])
+            ->all();
+        return $rows;
+    }
     public function search($params)
     {
         $query = Vehiculo::find();

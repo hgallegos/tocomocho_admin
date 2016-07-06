@@ -48,6 +48,8 @@ class VehiculoController extends Controller
 
         $buscaAuto = new VehiculoSearch();
         $data = $buscaAuto->VerAuto($id);
+
+        $reviws = $buscaAuto->VerResenias($id);
         
         if(!isset($data['idVehiculo'])){
             return $this->render('noexiste');
@@ -57,6 +59,7 @@ class VehiculoController extends Controller
             'autoData' => $data,
             'isLogin' => $isLogin,
             'idVehiculo' => $id,
+            'reviws' => $reviws,
         ]);
 
     }

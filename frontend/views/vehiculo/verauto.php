@@ -31,15 +31,26 @@
                         </tr>
                         </thead>
                         <tbody>
-
+                        <?php
+                                $b_hide = true;
+                                $valoracion = 0;
+                                for($i = 0; $i<sizeof($reviws); $i++){
+                                    $valoracion += $reviws[$i]['valoracion'];
+                                if($reviws[$i]['idUsuario'] == Yii::$app->user->getId()){
+                                    $b_hide = false;
+                                }
+                            ?>
 
                         <tr>
                             <td>
-                                <a href="/products/26371/redirect_to_store/?store=56" target="_blank" rel="nofollow">Hans el Violento</a>
+                                <a href="../resenia/view?id=<?= $reviws[$i]['idComentario'] ?>" rel="nofollow"><?= $reviws[$i]['nombre'] ?></a>
                             </td>
                             <td>
 
-                                <div style="width: 100px;" title="bueno" class="star" data-value="4.92" data-rating-url="/stores/56/ratings/"><img title="bueno" alt="1" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-on.png">&nbsp;<img title="bueno" alt="2" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-on.png">&nbsp;<img title="bueno" alt="3" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-on.png">&nbsp;<img title="bueno" alt="4" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-on.png">&nbsp;<img title="bueno" alt="5" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-on.png"><input readonly="readonly" value="4.92" name="score" type="hidden"></div>
+                                <div style="width: 100px;" title="Calificación" class="star" data-value="4.92" data-rating-url="/stores/56/ratings/">
+                                    <img title="Calificación" alt="1" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-<?php if($reviws[$i]['valoracion'] >= 1){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="Calificación" alt="2" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-<?php if($reviws[$i]['valoracion'] >= 2){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="Calificación" alt="3" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-<?php if($reviws[$i]['valoracion'] >= 3){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="Calificación" alt="4" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-<?php if($reviws[$i]['valoracion'] >= 4){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="Calificación" alt="5" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/star-<?php if($reviws[$i]['valoracion'] == 5){ echo 'on'; }else{ echo 'off'; } ?>.png">
+                                    <input readonly="readonly" value="4.92" name="score" type="hidden">
+                                </div>
 
                             </td>
 
@@ -47,16 +58,21 @@
 
                         </tr>
 
-
+                        <?php }
+                        if(sizeof($reviws) != 0){
+                            $valoracion = $valoracion / sizeof($reviws);
+                        }?>
                         </tbody>
                     </table>
+                    <?php if($isLogin){ ?>
+                    <?php if($b_hide){ ?>
                     <div>
-                        <a href="../resenia/autover?idVehiculo=<?= $idVehiculo ?>" class="btn btn-primary">
+                        <a href="../resenia/create_ver?idVehiculo=<?= $idVehiculo ?>" class="btn btn-primary">
                             ¿Eres dueño?
                             ¡Déjanos tus comentarios!
                         </a>
                     </div>
-                    <?php if($isLogin){ ?>
+                        <?php } ?>
                     <div class="row">
                         <div class="option_button col-xs-12">
                             <div class="btn-group">
@@ -101,7 +117,7 @@
 
                             <h4>Promedio Rating</h4>
 
-                            <div style="width: 180px;" title="muy bueno" id="product_rating" class="big_star" data-value="5.0" data-rating-url="/products/26371/ratings/"><img title="muy bueno" alt="1" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-on.png">&nbsp;<img title="muy bueno" alt="2" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-on.png">&nbsp;<img title="muy bueno" alt="3" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-on.png">&nbsp;<img title="muy bueno" alt="4" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-on.png">&nbsp;<img title="muy bueno" alt="5" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-on.png"><input readonly="readonly" value="5" name="score" type="hidden"></div>
+                            <div style="width: 180px;" title="muy bueno" id="product_rating" class="big_star" data-value="5.0" data-rating-url="/products/26371/ratings/"><img title="muy bueno" alt="1" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-<?php if($valoracion >= 1){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="muy bueno" alt="2" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-<?php if($valoracion >= 2){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="muy bueno" alt="3" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-<?php if($valoracion >= 3){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="muy bueno" alt="4" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-<?php if($valoracion >= 4){ echo 'on'; }else{ echo 'off'; } ?>.png">&nbsp;<img title="muy bueno" alt="5" src="https://solotodo.s3.amazonaws.com/javascripts/raty/img/big-star-<?php if($valoracion >= 5){ echo 'on'; }else{ echo 'off'; } ?>.png"><input readonly="readonly" value="5" name="score" type="hidden"></div>
 
                         </div>
                     </div>
