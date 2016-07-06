@@ -101,7 +101,7 @@ use common\models\Vehiculo;
 		        <h3 style="font-weight:bold;"><?php echo $vehiculo->marca; ?></h3>
 		        <h4>MODELO <?php echo $vehiculo->modelo; ?></h4>
 		        <p>"<?php echo $resenia->contenido; ?>"</p>
-		        <p><a href="<?='resenia/autover?idVehiculo='.$resenia->idVehiculo?>" class="btn btn-primary" role="button">Ir al detalle</a></p>
+		        <p><a href="<?='vehiculo/verauto?id='.$vehiculo->idVehiculo?>" class="btn btn-primary" role="button">Ir al detalle</a></p>
 		      </div>
 		    </div>
 		  </div>
