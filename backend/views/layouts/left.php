@@ -39,7 +39,7 @@
                         'icon' => 'fa fa-bell',
                         'url' => '#',
                         'items' => [
-                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['index'],],
+                            ['label' => 'Principal', 'icon' => 'fa fa-inbox', 'url' => ['/notificacion'],],
                             ['label' => 'No leidos', 'icon' => 'glyphicon glyphicon-eye-close', 'url' => ['notificacion/noleidos'], ],
                             ['label' => 'Borrador', 'icon' => 'fa fa-trash', 'url' => ['notificacion/trash'],],
 

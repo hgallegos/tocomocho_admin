@@ -20,19 +20,19 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
             [
               'attribute' => 'nombre usuario',
-                'value' => 'usuario.nombre'
+                'value' => 'usuario0.nombre'
             ],
             [
                 'attribute' => 'marca',
-                'value' => 'vehiculo.marca'
+                'value' => 'vehiculo0.marca'
             ],
             [
                 'attribute' => 'modelo',
-                'value' => 'vehiculo.modelo'
+                'value' => 'vehiculo0.modelo'
             ],
             [
                 'attribute' => 'anio',
-                'value' => 'vehiculo.anio'
+                'value' => 'vehiculo0.anio'
             ],
             'descripcion',
 

@@ -5,17 +5,15 @@ use yii\widgets\ActiveForm;
 /* @var $this yii\web\View */
 /* @var $model common\models\Vehiculo */
 /* @var $form yii\widgets\ActiveForm */
+$combustibles = ['Bencina', 'Diesel', 'Hibrido'];
 ?>
 
 <div class="vehiculo-form">
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'idMarca')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'anio')->textInput() ?>
 
-    <?= $form->field($model, 'tipo')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'marca')->textInput(['maxlength' => true]) ?>
 
@@ -25,7 +23,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cilindrada')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'tipoCombustible')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'tipoCombustible')->dropDownList($combustibles,['prompt' => 'Selecciona un combustible']) ?>
 
     <?= $form->field($model, 'transmision')->textInput(['maxlength' => true]) ?>
 

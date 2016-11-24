@@ -10,30 +10,31 @@ return [
         'class' => 'kartik\grid\SerialColumn',
         'width' => '30px',
     ],
-        [
+       /* [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'idVehiculo',
+    ],*/
+    /*[
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'idMarca',
+    ],*/
+    
+    /*[
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'tipo',
+    ],*/
+    [
+        'class'=>'\kartik\grid\DataColumn',
+        'attribute'=>'marca',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'idMarca',
+        'attribute'=>'modelo',
     ],
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'anio',
     ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'tipo',
-    ],
-    [
-        'class'=>'\kartik\grid\DataColumn',
-        'attribute'=>'marca',
-    ],
-    // [
-        // 'class'=>'\kartik\grid\DataColumn',
-        // 'attribute'=>'modelo',
-    // ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
         // 'attribute'=>'nPuertas',

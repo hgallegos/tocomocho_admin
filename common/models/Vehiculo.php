@@ -63,7 +63,7 @@ class Vehiculo extends \yii\db\ActiveRecord
         return [
             'idVehiculo' => 'Id Vehiculo',
             'idMarca' => 'Id Marca',
-            'anio' => 'Anio',
+            'anio' => 'Año',
             'tipo' => 'Tipo',
             'marca' => 'Marca',
             'modelo' => 'Modelo',

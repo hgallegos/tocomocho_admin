@@ -33,6 +33,15 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'status',
+            'format' => 'raw',
+            'value' => function ($dataProvider){
+                if($dataProvider->status == \common\models\Usuario::STATUS_ACTIVE){
+                    return "Activo";
+                }
+                else{
+                    return "Inactivo";
+                }
+            },
     ],
     // [
         // 'class'=>'\kartik\grid\DataColumn',
@@ -53,6 +62,14 @@ return [
     [
         'class'=>'\kartik\grid\DataColumn',
         'attribute'=>'tipo',
+        'format' => 'raw',
+        'value' => function ($dataProvider){
+            if($dataProvider->tipo == \common\models\Usuario::ROLE_ADMIN){
+                return "Administrador";
+            }else {
+                return "Usuario";
+            }
+        }
     ],
     [
         'class' => 'kartik\grid\ActionColumn',
